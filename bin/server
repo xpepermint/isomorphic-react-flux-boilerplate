@@ -1,0 +1,7 @@
+#!/usr/bin/env ./node_modules/.bin/babel-node --stage 0
+
+var app = require('..');
+var http = require('http');
+
+var server = http.createServer(app);
+server.listen(process.env.PORT || '4444', process.env.HOST || '0.0.0.0');
