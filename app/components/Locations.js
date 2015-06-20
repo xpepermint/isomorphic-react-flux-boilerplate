@@ -37,7 +37,7 @@ class Locations extends React.Component {
           return (
             <li key={location.id}>
               <b>{location.name}</b>
-              <FormattedRelative value={location.updatedAt} />
+              <span>, {location.updatedAt}</span>
             </li>
           );
         })}
