@@ -1,10 +1,12 @@
 import express from 'express';
 import assets from 'express-hash-webpack';
+import server from './app/server';
 
 let app = express();
 
-app.use(express.static(__dirname+'/public'));
-app.set('views', __dirname+'/views');
+app.use(express.static(`${__dirname}/public`));
+
+app.set('views', `${__dirname}/app`);
 app.set('view engine', 'ejs');
 
 app.use(assets({
@@ -12,6 +14,6 @@ app.use(assets({
   assetTemplate: 'http://localhost:4445[path][name][hash][ext]'
 }));
 
-app.get('*', require('./app/server'));
+app.get('*', server);
 
 export default app;
