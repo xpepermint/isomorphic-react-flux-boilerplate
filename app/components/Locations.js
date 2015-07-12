@@ -11,7 +11,6 @@ class Locations extends React.Component {
 
   componentDidMount() {
     LocationStore.listen(this.storeListener);
-    LocationActions.fetchLocations(); // not needed if using alt.bootstrap
   }
 
   componentWillUnmount() {
