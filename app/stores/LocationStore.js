@@ -1,29 +1,27 @@
 import alt from '../alt';
+import LocationSource from '../sources/LocationSource';
 import LocationActions from '../actions/LocationActions';
 
 class LocationStore {
   constructor() {
     this.locations = [];
-    this.error = null;
+
+    this.registerAsync(LocationSource);
 
     this.bindListeners({
-      handleFetchLocations: LocationActions.FETCH_LOCATIONS,
-      handleUpdateLocations: LocationActions.UPDATE_LOCATIONS,
-      handleLocationsFailed: LocationActions.LOCATIONS_FAILED
+      onFetch: LocationActions.fetch,
+      onFetchSuccess: LocationActions.fetchSuccess
     });
   }
 
-  handleUpdateLocations(locations) {
+  onFetch() {
+    if (!this.getInstance().isLoading()) {
+      this.getInstance().fetchLocations();
+    }
+  }
+
+  onFetchSuccess(locations) {
     this.locations = locations;
-    this.error = null;
-  }
-
-  handleFetchLocations() {
-    this.locations = []; // reset the array while we're fetching
-  }
-
-  handleLocationsFailed(error) {
-    this.error = error;
   }
 }
 
