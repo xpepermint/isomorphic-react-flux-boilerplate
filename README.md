@@ -3,7 +3,7 @@
 * [ReactJS](https://facebook.github.io/react/)
 * [Flux](https://facebook.github.io/flux/docs/overview.html) (using [Alt](http://alt.js.org/))
 * Isomorphic (same code for client and server)
-* Webpack (for compiling assets)
+* [Webpack](http://webpack.github.io) (for compiling assets)
 * Styles (using [Stylus](https://learnboost.github.io/stylus/))
 
 # Setup
