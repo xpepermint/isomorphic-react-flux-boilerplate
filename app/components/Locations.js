@@ -1,30 +1,21 @@
+import connectToStores from 'alt/utils/connectToStores';
 import React from 'react';
 import LocationActions from '../actions/LocationActions';
 import LocationStore from '../stores/LocationStore';
 
 class Locations extends React.Component {
-  constructor() {
-    super();
-    this.state = LocationStore.getState();
-    this.storeListener = this.onStoreChange.bind(this);
+  static getStores() {
+    return [LocationStore];
   }
 
-  componentDidMount() {
-    LocationStore.listen(this.storeListener);
-  }
-
-  componentWillUnmount() {
-    LocationStore.unlisten(this.storeListener);
-  }
-
-  onStoreChange(state) {
-    this.setState(state);
+  static getPropsFromStores() {
+    return LocationStore.getState();
   }
 
   render() {
     return (
       <ul>
-        {this.state.locations.map((location) => {
+        {this.props.locations.map((location) => {
           return (
             <li key={location.id}>
               <b>{location.name}</b>
@@ -37,4 +28,4 @@ class Locations extends React.Component {
   }
 }
 
-export default Locations;
+export default connectToStores(Locations);

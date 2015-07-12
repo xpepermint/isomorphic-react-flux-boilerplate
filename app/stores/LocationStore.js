@@ -4,24 +4,26 @@ import LocationActions from '../actions/LocationActions';
 
 class LocationStore {
   constructor() {
-    this.locations = [];
-
     this.registerAsync(LocationSource);
+    this.bindActions(LocationActions);
 
-    this.bindListeners({
-      onFetch: LocationActions.fetch,
-      onFetchSuccess: LocationActions.fetchSuccess
-    });
+    this.state = {
+      locations: []
+    };
   }
 
-  onFetch() {
+  onFetchLocations() {
     if (!this.getInstance().isLoading()) {
       this.getInstance().fetchLocations();
     }
   }
 
-  onFetchSuccess(locations) {
-    this.locations = locations;
+  onFetchLocationsSuccess(locations) {
+    this.setState({ locations });
+  }
+
+  onFetchLocationsError(err) {
+    console.log('Error:', err);
   }
 }
 
