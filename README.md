@@ -1,7 +1,7 @@
 # Features
 
 * [ReactJS](https://facebook.github.io/react/)
-* [Flux](https://facebook.github.io/flux/docs/overview.html) (using [Alt](http://alt.js.org/))
+* [Flux](https://facebook.github.io/flux/docs/overview.html) (using [Alt](http://alt.js.org/) and [axios](https://github.com/mzabriskie/axios))
 * Isomorphic (same code for client and server)
 * [Webpack](http://webpack.github.io) (for compiling assets)
 * Styles (using [Stylus](https://learnboost.github.io/stylus/))
