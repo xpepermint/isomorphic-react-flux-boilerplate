@@ -5,9 +5,6 @@ require('./styles/index.styl');
 import alt from './alt';
 alt.bootstrap(__STORES__);
 
-// Starting sockets.
-import sockets from './sockets';
-
 // Rendering react app.
 import React from 'react';
 import Router from 'react-router';
