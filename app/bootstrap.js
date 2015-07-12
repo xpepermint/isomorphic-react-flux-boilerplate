@@ -1,4 +1,4 @@
-import fetch from 'isomorphic-fetch';
+import axios from 'axios';
 
 export default function(req) {
   let apiUrl = req ? `${req.protocol}://${req.get('host')}` : '';
@@ -14,7 +14,7 @@ export default function(req) {
 };
 
 function loadLocations(apiUrl) {
-  return fetch(`${apiUrl}/locations.json`).then((response) => {
-    return response.json();
+  return axios.get(`${apiUrl}/locations.json`).then((res) => {
+    return res.data;
   });
 }

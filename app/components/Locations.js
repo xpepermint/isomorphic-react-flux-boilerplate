@@ -22,14 +22,6 @@ class Locations extends React.Component {
   }
 
   render() {
-    if (this.state.error) {
-      return (<div>Something is wrong</div>);
-    }
-
-    if (!this.state.locations.length) {
-      return (<div>Loading ...</div>);
-    }
-
     return (
       <ul>
         {this.state.locations.map((location) => {
