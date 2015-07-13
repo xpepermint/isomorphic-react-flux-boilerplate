@@ -1,20 +1,20 @@
 import axios from 'axios';
 
-export default function(req) {
-  let apiUrl = req ? `${req.protocol}://${req.get('host')}` : '';
-  let stores = {};
-
-  return Promise.resolve().then(() => {
-    return loadLocations(apiUrl);
-  }).then((locations) => {
-    stores.LocationStore = { locations };
-  }).then(() => {
-    return JSON.stringify(stores);
-  });
+export default function(baseUrl) {
+  if (baseUrl) {
+    return Promise.resolve({}).then((stores) => {
+      return loadLocations(baseUrl, stores);
+    }).then((stores) => {
+      return JSON.stringify(stores);
+    });
+  } else {
+    return Promise.resolve(__STORES__);
+  }
 };
 
-function loadLocations(apiUrl) {
-  return axios.get(`${apiUrl}/locations.json`).then((res) => {
-    return res.data;
+function loadLocations(baseUrl, stores) {
+  return axios.get(`${baseUrl}/locations.json`).then((res) => {
+    stores.LocationStore = { locations: res.data };
+    return stores;
   });
 }
