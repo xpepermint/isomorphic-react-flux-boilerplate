@@ -1,6 +1,5 @@
 import express from 'express';
 import assets from 'express-hash-webpack';
-import swig from 'swig';
 import server from './app/server';
 
 let app = express();
