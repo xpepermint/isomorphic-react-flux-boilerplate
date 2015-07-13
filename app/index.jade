@@ -1,0 +1,10 @@
+doctype html
+html(lang="en")
+  head
+    title React App
+    link(href="#{assetPath('bundle.css')}" media="all" rel="stylesheet" type="text/css")
+  body
+    #app!= html
+    script(type='text/javascript').
+      var __STORES__ = '!{ stores }'
+    script(src="#{assetPath('bundle.js')}" type="text/javascript" async)
