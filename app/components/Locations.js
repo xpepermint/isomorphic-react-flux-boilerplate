@@ -1,21 +1,33 @@
-import connectToStores from 'alt/utils/connectToStores';
 import React from 'react';
 import LocationActions from '../actions/LocationActions';
 import LocationStore from '../stores/LocationStore';
+import LocationSocket from '../sockets/LocationSocket';
 
 class Locations extends React.Component {
-  static getStores() {
-    return [LocationStore];
+  constructor() {
+    super();
+    this.state = LocationStore.getState();
+    this.storeListener = this.onChange.bind(this);
   }
 
-  static getPropsFromStores() {
-    return LocationStore.getState();
+  componentDidMount() {
+    LocationStore.listen(this.storeListener);
+    // LocationSocket.connect();
+  }
+
+  componentWillUnmount() {
+    LocationStore.unlisten(this.storeListener);
+    // LocationSocket.disconnect();
+  }
+
+  onChange() {
+    this.setState(LocationStore.getState());
   }
 
   render() {
     return (
       <ul>
-        {this.props.locations.map((location) => {
+        {this.state.locations.map((location) => {
           return (
             <li key={location.id}>
               <b>{location.name}</b>
@@ -28,4 +40,4 @@ class Locations extends React.Component {
   }
 }
 
-export default connectToStores(Locations);
+export default Locations;

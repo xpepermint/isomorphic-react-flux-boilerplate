@@ -10,6 +10,8 @@
 
 * Styles (using [Stylus](https://learnboost.github.io/stylus/))
 
+* [Socket.io](http://socket.io) (for real-time communication)
+
 # Setup
 
 Follow these steps to start developing your next React app.
@@ -23,3 +25,7 @@ Follow these steps to start developing your next React app.
 * Run `npm run webpack:server` to start assets server.
 
 * Open browser and navigate to `http://localhost:4444`.
+
+## Socket.io
+
+To enable sockets open `./app/components/Locations.js` and uncomment `LocationSocket.connect();` and `LocationSocket.disconnect();`. This project is configured to work directly with [socketio-boilerplate](https://github.com/xpepermint/socketio-boilerplate) which listens on `localhost:5555` by default. You can configure the socket server path inside `./app/sockets/LocationSocket.js` file.

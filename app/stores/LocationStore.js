@@ -19,7 +19,7 @@ class LocationStore {
   }
 
   onFetchLocationsSuccess(locations) {
-    this.setState({ locations });
+    this.setState({locations});
   }
 
   onFetchLocationsError(err) {
