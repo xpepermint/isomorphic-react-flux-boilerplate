@@ -17,7 +17,6 @@ var config = {
   module: {
     loaders: [
       {test: /\.js(x)?$/, loaders: ['react-hot', 'babel'], exclude: /node_modules/},
-      {test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/},
       {test: /\.json$/, loaders: ['json']},
       {test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader')},
       {test: /\.styl$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader!stylus-loader')},
@@ -25,6 +24,7 @@ var config = {
   },
   plugins: [
     new webpack.NoErrorsPlugin(),
+    new webpack.EnvironmentPlugin(Object.keys(process.env)),
     new webpack.optimize.UglifyJsPlugin(),
     new webpack.optimize.DedupePlugin(),
     new CompressionPlugin(),
