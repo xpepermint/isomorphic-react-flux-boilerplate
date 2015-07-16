@@ -12,13 +12,15 @@
 
 * [Socket.io](http://socket.io) (for real-time communication)
 
+* Api integration
+
 * Centralized configuration
 
 * ES6 syntax
 
 # Setup
 
-Follow these steps to start developing your next React app.
+This app is configure to work with [express-api-boilerplate](https://github.com/xpepermint/express-api-boilerplate) and [socketio-boilerplate](https://github.com/xpepermint/socketio-boilerplate) out of the box. To quickly run the application without modifying it, make sure that both boilerplates are running, then follow the steps below to start developing your next React app.  
 
 * Download this project source `git clone https://github.com/xpepermint/isomorphic-react-flux-boilerplate`.
 
@@ -29,10 +31,6 @@ Follow these steps to start developing your next React app.
 * Run `npm run webpack:server` to start assets server.
 
 * Open browser and navigate to `http://localhost:4444`.
-
-## Socket.io
-
-To enable sockets open `./app/components/Locations.js` and uncomment `LocationSocket.connect();` and `LocationSocket.disconnect();`. This project is configured to work directly with [socketio-boilerplate](https://github.com/xpepermint/socketio-boilerplate) which listens on `localhost:5555` by default. You can configure the socket server path inside `./app/sockets/LocationSocket.js` file.
 
 # Related Projects
 
