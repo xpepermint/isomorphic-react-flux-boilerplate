@@ -1,4 +1,4 @@
-import alt from '../alt';
+import Alt from '../lib/Alt';
 import LocationSource from '../sources/LocationSource';
 import LocationActions from '../actions/LocationActions';
 
@@ -27,4 +27,4 @@ class LocationStore {
   }
 }
 
-export default alt.createStore(LocationStore, 'LocationStore');
+export default Alt.createStore(LocationStore, 'LocationStore');

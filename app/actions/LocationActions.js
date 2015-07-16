@@ -1,6 +1,6 @@
-import alt from '../alt';
+import Alt from '../lib/Alt';
 
-export default alt.generateActions(
+export default Alt.generateActions(
   'fetchLocations',
   'fetchLocationsSuccess',
   'fetchLocationsError'

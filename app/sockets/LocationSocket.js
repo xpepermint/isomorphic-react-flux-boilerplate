@@ -1,9 +1,9 @@
-import io from 'socket.io-client';
+import Socket from '../lib/Socket';
 import LocationActions from '../actions/LocationActions';
 
 class LocationSocket {
   constructor() {
-    this.io = io.connect('http://localhost:5555/locations', {autoConnect: false});
+    this.io = Socket.create('/locations');
     this.io.on('initialize', this.onInitialize);
   }
 
