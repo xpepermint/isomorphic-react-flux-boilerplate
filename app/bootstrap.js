@@ -1,9 +1,9 @@
-import axios from 'axios';
+import Api from './lib/Api';
 
-export default function(baseUrl) {
-  if (baseUrl) {
+export default function(req) {
+  if (req) {
     return Promise.resolve({}).then((stores) => {
-      return loadLocations(baseUrl, stores);
+      return loadLocations(stores);
     }).then((stores) => {
       return JSON.stringify(stores);
     });
@@ -12,9 +12,9 @@ export default function(baseUrl) {
   }
 };
 
-function loadLocations(baseUrl, stores) {
-  return axios.get(`${baseUrl}/locations.json`).then((res) => {
+function loadLocations(stores) {
+  return Api.get('/locations').then((res) => {
     stores.LocationStore = { locations: res.data };
     return stores;
-  });
+  }).catch(console.log);
 }

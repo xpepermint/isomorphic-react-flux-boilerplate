@@ -1,10 +1,10 @@
-import axios from 'axios';
+import Api from '../lib/Api';
 import LocationActions from '../actions/LocationActions';
 
 const LocationSource = {
   fetchLocations: {
     remote(state) {
-      return axios.get('/locations.json').then((res) => {
+      return Api.get('/locations').then((res) => {
         return res.data;
       });
     },

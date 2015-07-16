@@ -12,6 +12,8 @@
 
 * [Socket.io](http://socket.io) (for real-time communication)
 
+* Centralized configuration
+
 * ES6 syntax
 
 # Setup

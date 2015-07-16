@@ -12,12 +12,12 @@ class Locations extends React.Component {
 
   componentDidMount() {
     LocationStore.listen(this.storeListener);
-    // LocationSocket.connect();
+    LocationSocket.connect();
   }
 
   componentWillUnmount() {
     LocationStore.unlisten(this.storeListener);
-    // LocationSocket.disconnect();
+    LocationSocket.disconnect();
   }
 
   onChange() {

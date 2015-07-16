@@ -1,10 +1,8 @@
 import Socket from 'socket.io-client';
-
-const baseUrl = 'http://localhost:5555';
+import config from '../../config';
 
 Socket.create = (path) => {
-  let config = {autoConnect: false, query: {accessToken: 'fake token'}};
-  return Socket.connect(`${baseUrl}${path}`, config);
+  return Socket.connect(`${config.socketBaseUrl}${path}`, {autoConnect: false, query: {accessToken: 'fake token'}});
 };
 
 export default Socket;

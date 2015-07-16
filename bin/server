@@ -1,7 +1,8 @@
 #!/usr/bin/env ./node_modules/.bin/babel-node --stage 0
 
-import app from '..';
 import http from 'http';
+import app from '..';
+import config from '../config';
 
 let server = http.createServer(app);
-server.listen(process.env.PORT || '4444', process.env.HOST || '0.0.0.0');
+server.listen(config.httpServerPort, config.httpServerHost);

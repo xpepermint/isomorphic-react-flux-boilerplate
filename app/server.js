@@ -7,9 +7,8 @@ import Alt from './lib/Alt';
 
 export default (req, res) => {
   let location = new Location(req.path, req.query);
-  let baseUrl = `${req.protocol}://${req.get('host')}`;
 
-  bootstrap(baseUrl).then((stores) => {
+  bootstrap(req).then((stores) => {
     Alt.bootstrap(stores);
 
     Router.run(routes, location, (error, state, transition) => {
