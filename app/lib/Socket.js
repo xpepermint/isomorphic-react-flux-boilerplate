@@ -3,7 +3,7 @@ import config from '../../config';
 import SessionStore from '../stores/SessionStore';
 
 Socket.create = (path) => {
-  return Socket.connect(`${config.socketBaseUrl}${path}`, {autoConnect: false, query: {accessToken: SessionStore.getAccessToken()}});
+  return Socket.connect(`${config.socketBaseUrl}${path}`, {autoConnect: false});
 };
 
 export default Socket;

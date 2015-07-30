@@ -12,7 +12,7 @@ class Stats extends React.Component {
 
   componentDidMount() {
     StatsStore.listen(this.storeListener);
-    StatsActions.getStats(this.props.params.projectId);
+    StatsActions.getStats();
     StatsSocket.connect();
   }
 
@@ -28,10 +28,9 @@ class Stats extends React.Component {
   render() {
     return (
       <div>
-        <div>Environment: {this.state.env}</div>
-        <div>Platform: {this.state.platform}</div>
-        <div>MemoryUsage: {this.state.memoryUsage}</div>
-        <div>Uptime: {this.state.uptime}</div>
+        <div>Environment: {this.state.stats.env}</div>
+        <div>Platform: {this.state.stats.platform}</div>
+        <div>Uptime: {this.state.stats.uptime}</div>
       </div>
     );
   }

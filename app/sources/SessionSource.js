@@ -8,7 +8,7 @@ const SessionSource = {
     remote(state, id) {
       let accessToken = SessionStore.getAccessToken();
       let options = {headers: {'Authorization': `Bearer ${accessToken}`}};
-      return axios.get(`${config.apiBaseUrl}/me`, options);
+      return axios.get(`${config.apiBaseUrl}/me`, options).then(res => {return res.data});
     },
     success: SessionActions.meSuccess,
     error: SessionActions.meError
@@ -16,7 +16,7 @@ const SessionSource = {
 
   login: {
     remote(state, data) {
-      return axios.post(`${config.apiBaseUrl}/login`, data);
+      return axios.post(`${config.apiBaseUrl}/login`, data).then(res => {return res.data});
     },
     success: SessionActions.loginSuccess,
     error: SessionActions.loginError

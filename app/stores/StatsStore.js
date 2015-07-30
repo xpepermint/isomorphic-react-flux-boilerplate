@@ -6,7 +6,7 @@ class StatsStore {
   constructor() {
     this.registerAsync(StatsSource);
     this.bindActions(StatsActions);
-    this.state = {};
+    this.state = {stats: {}};
   }
 
   onGetStats(id) {
@@ -14,8 +14,8 @@ class StatsStore {
     this.getInstance().getStats(id);
   }
 
-  onGetStatsSuccess(data) {
-    this.setState(data);
+  onGetStatsSuccess(stats) {
+    this.setState({stats});
   }
 
   onGetStatsError(error) {

@@ -27,8 +27,8 @@ class Project extends React.Component {
     return (
       <div>
         <Link to={`/projects`}>Back</Link>
-        <div>ID: {this.state.data.id}</div>
-        <div>Name: {this.state.data.name}</div>
+        <div>ID: {this.state.project.id}</div>
+        <div>Name: {this.state.project.name}</div>
       </div>
     );
   }

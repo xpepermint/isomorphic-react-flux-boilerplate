@@ -8,7 +8,7 @@ class SessionStore {
     this.registerAsync(SessionSource);
     this.bindActions(SessionActions);
     this.exportPublicMethods({isAuthenticated: this.isAuthenticated, getAccessToken: this.getAccessToken});
-    this.state = {};
+    this.state = {me: {}};
   }
 
   getAccessToken() {
@@ -24,12 +24,12 @@ class SessionStore {
     this.getInstance().getMe();
   }
 
-  onGetMeSuccess(data) {
-    this.setState({data});
+  onGetMeSuccess(me) {
+    this.setState({me});
   }
 
   onGetError(error) {
-    this.setState({data});
+    this.setState(error);
   }
 
   onLogin(data) {
@@ -37,13 +37,13 @@ class SessionStore {
     this.getInstance().login(data);
   }
 
-  onLoginSuccess(res) {
-    cookie.save('accessToken', res.data.accessToken);
-    this.setState(res.data);
+  onLoginSuccess(me) {
+    cookie.save('accessToken', me.accessToken);
+    this.setState({me});
   }
 
-  onLoginError(res) {
-    this.setState(res.data);
+  onLoginError(error) {
+    this.setState(error);
   }
 
   onLogout() {

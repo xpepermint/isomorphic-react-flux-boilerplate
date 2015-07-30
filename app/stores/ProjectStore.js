@@ -6,7 +6,7 @@ class ProjectStore {
   constructor() {
     this.registerAsync(ProjectSource);
     this.bindActions(ProjectActions);
-    this.state = {};
+    this.state = {project: {}};
   }
 
   onGetProject(id) {
@@ -14,12 +14,12 @@ class ProjectStore {
     this.getInstance().getProject(id);
   }
 
-  onGetProjectSuccess(data) {
-    this.setState({data});
+  onGetProjectSuccess(project) {
+    this.setState({project});
   }
 
   onGetProjectError(error) {
-    this.setState({data});
+    this.setState(error);
   }
 }
 

@@ -26,7 +26,7 @@ class Projects extends React.Component {
   render() {
     return (
       <ul>
-        {this.state.data.map((project) => {
+        {this.state.projects.map((project) => {
           return (
             <li key={project.id}>
               <Link to={`/projects/${project.id}`}>{project.name}</Link>

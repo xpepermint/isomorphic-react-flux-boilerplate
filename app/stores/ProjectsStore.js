@@ -6,7 +6,7 @@ class ProjectsStore {
   constructor() {
     this.registerAsync(ProjectsSource);
     this.bindActions(ProjectsActions);
-    this.state = {};
+    this.state = {projects: []};
   }
 
   onGetProjects() {
@@ -14,12 +14,12 @@ class ProjectsStore {
     this.getInstance().getProjects();
   }
 
-  onGetProjectsSuccess(data) {
-    this.setState({data});
+  onGetProjectsSuccess(projects) {
+    this.setState({projects});
   }
 
   onGetProjectsError(error) {
-    this.setState({error});
+    this.setState(error);
   }
 }
 
