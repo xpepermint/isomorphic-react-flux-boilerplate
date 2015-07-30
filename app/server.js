@@ -1,6 +1,6 @@
 import Iso from 'iso';
 import React from 'react';
-import ReactDOMServer from 'react-dom/server';
+import ReactDomServer from 'react-dom/server';
 import Router from 'react-router';
 import Location from 'react-router/lib/Location';
 import Cookie from 'react-cookie';
@@ -19,7 +19,7 @@ export default (req, res, next) => {
     bootstrap(state, req).then(snapshot => {
       Alt.bootstrap(snapshot);
 
-      let markup = ReactDOMServer.renderToString(<Router {...state}/>);
+      let markup = ReactDomServer.renderToString(<Router {...state}/>);
       let html = Iso.render(markup, Alt.flush());
       res.render('index', {html});
     }).catch(next);

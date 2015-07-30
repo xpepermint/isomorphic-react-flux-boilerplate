@@ -16,7 +16,7 @@ class SessionStore {
   }
 
   isAuthenticated() {
-    return !!(this.accessToken || this.getAccessToken());
+    return !!this.getAccessToken();
   }
 
   onGetMe() {
@@ -47,7 +47,6 @@ class SessionStore {
   }
 
   onLogout() {
-    console.log('xXXXXXXXXXXXX');
     cookie.remove('accessToken');
   }
 }
