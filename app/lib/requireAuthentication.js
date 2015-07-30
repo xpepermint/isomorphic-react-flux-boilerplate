@@ -1,5 +1,5 @@
-import Cookie from 'react-cookie';
+import SessionStore from '../stores/SessionStore';
 
 export default function(nextState, transition) {
-  if (!Cookie.load('accessToken')) transition.to('/login');
+  if (!SessionStore.isAuthenticated()) transition.to('/login');
 }

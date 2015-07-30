@@ -8,7 +8,7 @@ import Alt from './lib/Alt';
 import bootstrap from './lib/bootstrap';
 
 export default (req, res, next) => {
-  Cookie.setRawCookie(req.headers.cookie);
+  Cookie.setRawCookie(req.headers.cookie||'');
 
   let location = new Location(req.path, req.query);
   Router.run(routes, location, (error, state, transition) => {

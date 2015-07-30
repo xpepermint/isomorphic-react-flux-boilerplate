@@ -1,14 +1,13 @@
-import cookie from 'react-cookie';
 import axios from 'axios';
 import config from '../../config';
 import LocationActions from '../actions/LocationActions';
-
-let accessToken = cookie.load('accessToken');
-let options = {headers: {'Authorization': `Bearer ${accessToken}`}};
+import SessionStore from '../stores/SessionStore';
 
 const LocationSource = {
   getLocation: {
     remote(state, id) {
+      let accessToken = SessionStore.getAccessToken();
+      let options = {headers: {'Authorization': `Bearer ${accessToken}`}};
       return axios.get(`${config.apiBaseUrl}/locations/${id}`, options).then(res => {return res.data});
     },
     success: LocationActions.getLocationSuccess,
