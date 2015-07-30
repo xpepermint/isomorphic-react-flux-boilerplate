@@ -3,13 +3,13 @@ import React from 'react';
 import ReactDomServer from 'react-dom/server';
 import Router from 'react-router';
 import Location from 'react-router/lib/Location';
-import Cookie from 'react-cookie';
+import cookie from 'react-cookie';
 import routes from './routes';
 import Alt from './lib/Alt';
 import bootstrap from './lib/bootstrap';
 
 export default (req, res, next) => {
-  Cookie.setRawCookie(req.headers.cookie || '');
+  cookie.setRawCookie(req.headers.cookie);
 
   let location = new Location(req.path, req.query);
   Router.run(routes, location, (error, state, transition) => {

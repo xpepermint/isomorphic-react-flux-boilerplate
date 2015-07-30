@@ -1,25 +1,28 @@
 import React from 'react';
 import StatsActions from '../actions/StatsActions';
 import StatsStore from '../stores/StatsStore';
+import StatsSocket from '../sockets/StatsSocket';
 
 class Stats extends React.Component {
   constructor() {
     super();
     this.state = StatsStore.getState();
-    // this.storeListener = this.onChange.bind(this);
+    this.storeListener = this.onChange.bind(this);
   }
 
   componentDidMount() {
-    // StatsStore.listen(this.storeListener);
-    // StatsActions.getStats(this.props.params.projectId);
+    StatsStore.listen(this.storeListener);
+    StatsActions.getStats(this.props.params.projectId);
+    StatsSocket.connect();
   }
 
   componentWillUnmount() {
-    // StatsStore.unlisten(this.storeListener);
+    StatsSocket.disconnect();
+    StatsStore.unlisten(this.storeListener);
   }
 
   onChange() {
-    // this.setState(StatsStore.getState());
+    this.setState(StatsStore.getState());
   }
 
   render() {

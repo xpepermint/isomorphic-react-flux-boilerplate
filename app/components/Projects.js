@@ -2,7 +2,6 @@ import React from 'react';
 import {Link} from 'react-router';
 import ProjectsActions from '../actions/ProjectsActions';
 import ProjectsStore from '../stores/ProjectsStore';
-// import ProjectsSocket from '../sockets/ProjectsSocket';
 
 class Projects extends React.Component {
   constructor() {
@@ -13,13 +12,11 @@ class Projects extends React.Component {
 
   componentDidMount() {
     ProjectsStore.listen(this.storeListener);
-    // ProjectsSocket.connect();
     ProjectsActions.getProjects();
   }
 
   componentWillUnmount() {
     ProjectsStore.unlisten(this.storeListener);
-    // ProjectsSocket.disconnect();
   }
 
   onChange() {
