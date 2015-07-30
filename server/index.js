@@ -7,6 +7,7 @@ import pageNotFound from './middlewares/pageNotFound';
 import errorHandler from './middlewares/errorHandler';
 
 let app = express();
+app.set('env', config.env);
 app.set('trust proxy', 'loopback');
 app.set('x-powered-by', false);
 app.set('views', `${__dirname}/views`);

@@ -1,4 +1,5 @@
 export default {
+  env: process.env.NODE_ENV || 'development',
   appSecret: process.env.APP_SECRET || 'secret',
   httpServerHost: process.env.HTTP_SERVER_HOST || '127.0.0.1',
   httpServerPort: process.env.HTTP_SERVER_PORT || 4444,

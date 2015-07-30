@@ -37,10 +37,3 @@ This app is configure to work with [express-api-boilerplate](https://github.com/
 * [express-api-boilerplate](https://github.com/xpepermint/express-api-boilerplate)
 
 * [socketio-boilerplate](https://github.com/xpepermint/socketio-boilerplate)
-
-
-
-
-// FORMS
-// var data = new FormData();
-// data.append('foo', 'bar');
