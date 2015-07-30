@@ -1,36 +1,38 @@
 import React from 'react';
-import LocationActions from '../actions/LocationActions';
-import LocationStore from '../stores/LocationStore';
-import LocationSocket from '../sockets/LocationSocket';
+import {Link} from 'react-router';
+import LocationsActions from '../actions/LocationsActions';
+import LocationsStore from '../stores/LocationsStore';
+import LocationsSocket from '../sockets/LocationsSocket';
 
 class Locations extends React.Component {
   constructor() {
     super();
-    this.state = LocationStore.getState();
+    this.state = LocationsStore.getState();
     this.storeListener = this.onChange.bind(this);
   }
 
   componentDidMount() {
-    LocationStore.listen(this.storeListener);
-    LocationSocket.connect();
+    LocationsStore.listen(this.storeListener);
+    LocationsSocket.connect();
+    LocationsActions.getLocations();
   }
 
   componentWillUnmount() {
-    LocationStore.unlisten(this.storeListener);
-    LocationSocket.disconnect();
+    LocationsStore.unlisten(this.storeListener);
+    LocationsSocket.disconnect();
   }
 
   onChange() {
-    this.setState(LocationStore.getState());
+    this.setState(LocationsStore.getState());
   }
 
   render() {
     return (
       <ul>
-        {this.state.locations.map((location) => {
+        {this.state.data.map((location) => {
           return (
             <li key={location.id}>
-              <b>{location.name}</b>
+              <Link to={`/locations/${location.id}`}>{location.name}</Link>
               <span>, {location.updatedAt}</span>
             </li>
           );

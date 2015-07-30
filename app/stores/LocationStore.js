@@ -6,24 +6,20 @@ class LocationStore {
   constructor() {
     this.registerAsync(LocationSource);
     this.bindActions(LocationActions);
-
-    this.state = {
-      locations: []
-    };
+    this.state = {data: []};
   }
 
-  onFetchLocations() {
-    if (!this.getInstance().isLoading()) {
-      this.getInstance().fetchLocations();
-    }
+  onGetLocation(id) {
+    if (this.getInstance().isLoading()) return;
+    this.getInstance().getLocation(id);
   }
 
-  onFetchLocationsSuccess(locations) {
-    this.setState({locations});
+  onGetLocationSuccess(data) {
+    this.setState({data});
   }
 
-  onFetchLocationsError(err) {
-    console.log('Error:', err);
+  onGetLocationError(error) {
+    this.setState({data});
   }
 }
 

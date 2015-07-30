@@ -1,7 +1,7 @@
 import Socket from '../lib/Socket';
-import LocationActions from '../actions/LocationActions';
+import LocationsActions from '../actions/LocationsActions';
 
-class LocationSocket {
+class LocationsSocket {
   constructor() {
     this.io = Socket.create('/locations');
     this.io.on('initialize', this.onInitialize);
@@ -16,8 +16,8 @@ class LocationSocket {
   }
 
   onInitialize(locations) {
-    LocationActions.fetchLocationsSuccess(locations);
+    LocationsActions.getLocationsSuccess(locations);
   }
 }
 
-export default new LocationSocket();
+export default new LocationsSocket();

@@ -1,15 +1,18 @@
-import Api from '../lib/Api';
+import cookie from 'react-cookie';
+import axios from 'axios';
+import config from '../../config';
 import LocationActions from '../actions/LocationActions';
 
+let accessToken = cookie.load('accessToken');
+let options = {headers: {'Authorization': `Bearer ${accessToken}`}};
+
 const LocationSource = {
-  fetchLocations: {
-    remote(state) {
-      return Api.get('/locations').then((res) => {
-        return res.data;
-      });
+  getLocation: {
+    remote(state, id) {
+      return axios.get(`${config.apiBaseUrl}/locations/${id}`, options).then(res => {return res.data});
     },
-    success: LocationActions.fetchSuccess,
-    error: LocationActions.fetchError,
+    success: LocationActions.getLocationSuccess,
+    error: LocationActions.getLocationError
   }
 };
 
