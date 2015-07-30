@@ -7,7 +7,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var config = {
   entry: {
-    bundle: path.resolve(__dirname, 'app/client.js')
+    bundle: path.resolve(__dirname, 'app/index.js')
   },
   output: {
     path: path.resolve(__dirname, 'public/assets'),

@@ -4,11 +4,13 @@ import ReactDomServer from 'react-dom/server';
 import Router from 'react-router';
 import Location from 'react-router/lib/Location';
 import cookie from 'react-cookie';
-import routes from './routes';
-import Alt from './lib/Alt';
-import bootstrap from './lib/bootstrap';
+import routes from '../../app/routes';
+import Alt from '../../app/lib/Alt';
+import bootstrap from '../../app/lib/bootstrap';
 
-export default (req, res, next) => {
+export default {render};
+
+function render(req, res, next) {
   cookie.setRawCookie(req.headers.cookie);
 
   let location = new Location(req.path, req.query);
@@ -24,4 +26,4 @@ export default (req, res, next) => {
       res.render('index', {html});
     }).catch(next);
   });
-};
+}
