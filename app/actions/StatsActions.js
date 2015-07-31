@@ -1,10 +1,10 @@
 import Alt from '../lib/Alt';
-import Api from '../lib/Api';
+import RestApi from '../lib/RestApi';
 
 class StatsActions {
   getStats() {
     this.dispatch();
-    Api.get(`/stats`).then(this.actions.setStats).catch(this.actions.setError);
+    RestApi.get(`/stats`).then(this.actions.setStats).catch(this.actions.setError);
   }
 
   setStats(res) {

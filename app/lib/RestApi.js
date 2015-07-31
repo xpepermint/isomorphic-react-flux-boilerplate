@@ -2,7 +2,7 @@ import axios from 'axios';
 import config from '../../config';
 import SessionStore from '../stores/SessionStore';
 
-class Api {
+class RestApi {
   get(path, options) {
     return axios.get(this.buildUrl(path), this.buildRequestOptions(options));
   }
@@ -36,4 +36,4 @@ class Api {
   }
 }
 
-export default new Api();
+export default new RestApi();

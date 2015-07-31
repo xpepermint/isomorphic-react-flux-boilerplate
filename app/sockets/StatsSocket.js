@@ -1,18 +1,11 @@
-import Socket from '../lib/Socket';
+import SocketApi from '../lib/SocketApi';
 import StatsActions from '../actions/StatsActions';
 
-class StatsSocket {
+class StatsSocket extends SocketApi {
   constructor() {
-    this.io = Socket.create('/stats');
-    this.io.on('initialize', this.onInitialize);
-  }
-
-  connect() {
-    this.io.open();
-  }
-
-  disconnect() {
-    this.io.close();
+    super();
+    this.room = this.createRoom('/stats');
+    this.room.on('initialize', this.onInitialize);
   }
 
   onInitialize(stats) {

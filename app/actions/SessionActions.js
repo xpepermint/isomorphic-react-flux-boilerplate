@@ -1,10 +1,10 @@
 import Alt from '../lib/Alt';
-import Api from '../lib/Api';
+import RestApi from '../lib/RestApi';
 
 class SessionActions {
   getMe() {
     this.dispatch();
-    Api.get(`/me`, {accessToken: true}).then(this.actions.setMe).catch(this.actions.setError);
+    RestApi.get(`/me`, {accessToken: true}).then(this.actions.setMe).catch(this.actions.setError);
   }
 
   setMe(res) {
@@ -13,7 +13,7 @@ class SessionActions {
 
   login(data) {
     this.dispatch();
-    Api.post(`/login`, data).then(this.actions.setMe).catch(this.actions.setError);
+    RestApi.post(`/login`, data).then(this.actions.setMe).catch(this.actions.setError);
   }
 
   logout() {

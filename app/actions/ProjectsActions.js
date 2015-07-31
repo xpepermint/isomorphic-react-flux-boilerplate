@@ -1,10 +1,10 @@
 import Alt from '../lib/Alt';
-import Api from '../lib/Api';
+import RestApi from '../lib/RestApi';
 
 class ProjectsActions {
   getProjects() {
     this.dispatch();
-    Api.get(`/projects`, {accessToken: true}).then(this.actions.setProjects).catch(this.actions.setError);
+    RestApi.get(`/projects`, {accessToken: true}).then(this.actions.setProjects).catch(this.actions.setError);
   }
 
   setProjects(res) {
