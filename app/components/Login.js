@@ -4,6 +4,10 @@ import SessionActions from '../actions/SessionActions';
 import SessionStore from '../stores/SessionStore';
 
 class Login extends React.Component {
+  static contextTypes = {
+    router: React.PropTypes.object.isRequired
+  };
+
   constructor() {
     super();
     this.state = SessionStore.getState();
@@ -44,9 +48,5 @@ class Login extends React.Component {
     );
   }
 }
-
-Login.contextTypes = {
-  router: React.PropTypes.object.isRequired
-};
 
 export default Login;

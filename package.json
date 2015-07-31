@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "server": "nodemon --exec ./node_modules/.bin/babel-node --stage 0 -- ./bin/server",
+    "server": "nodemon --exec ./node_modules/.bin/babel-node -- ./bin/server",
     "webpack:build": "./node_modules/.bin/webpack",
     "webpack:server": "./node_modules/.bin/webpack-dev-server --inline --devtool eval --progress --colors --hot --port 4445 --host 127.0.0.1 --content-base public/assets/",
     "test": "echo \"Error: no test specified\" && exit 1"
