@@ -17,7 +17,7 @@ class SessionActions {
 
   login(data) {
     this.dispatch();
-    Api.get(`/login`, data).then(this.actions.loginSuccess).catch(this.actions.loginError);
+    Api.post(`/login`, data).then(this.actions.loginSuccess).catch(this.actions.loginError);
   }
 
   loginSuccess(res) {

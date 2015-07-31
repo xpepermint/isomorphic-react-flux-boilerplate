@@ -50,7 +50,7 @@ class SessionStore {
   }
 
   onLoginError(error) {
-    this.setState(error);
+    this.setState({error});
   }
 
   onLogout() {
