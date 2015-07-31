@@ -19,10 +19,10 @@ class Login extends React.Component {
   }
 
   onChange() {
+    this.setState(SessionStore.getState());
+
     if (SessionStore.isAuthenticated()) {
-      this.context.router.transitionTo('/');
-    } else {
-      this.setState(SessionStore.getState());
+      setImmediate(() => {this.context.router.transitionTo('/projects')});
     }
   }
 

@@ -4,7 +4,7 @@ import SessionActions from '../actions/SessionActions';
 class Logout extends React.Component {
   componentDidMount() {
     SessionActions.logout();
-    this.context.router.transitionTo('/');
+    setImmediate(() => {this.context.router.transitionTo('/')});
   }
 
   render() {
