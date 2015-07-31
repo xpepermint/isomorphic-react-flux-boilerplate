@@ -13,7 +13,7 @@ class Logout extends React.Component {
 }
 
 Logout.contextTypes = {
-  router: React.PropTypes.func
+  router: React.PropTypes.object.isRequired
 };
 
 export default Logout;
