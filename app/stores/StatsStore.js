@@ -5,16 +5,16 @@ class StatsStore {
   constructor() {
     this.state = {stats: {}};
     this.bindListeners({
-      onGetStatsSuccess: StatsActions.getStatsSuccess,
-      onGetStatsError: StatsActions.getStatsError,
+      onSetStats: StatsActions.setStats,
+      onSetError: StatsActions.setError,
     });
   }
 
-  onGetStatsSuccess(stats) {
+  onSetStats(stats) {
     this.setState({stats});
   }
 
-  onGetStatsError(error) {
+  onSetError(error) {
     this.setState({error});
   }
 }

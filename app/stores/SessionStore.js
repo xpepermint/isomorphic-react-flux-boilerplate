@@ -6,10 +6,8 @@ class SessionStore {
   constructor() {
     this.state = this.getDefaultState();
     this.bindListeners({
-      onGetMeSuccess: SessionActions.getMeSuccess,
-      onGetError: SessionActions.getMeError,
-      onLoginSuccess: SessionActions.loginSuccess,
-      onLoginError: SessionActions.loginError,
+      onSetMe: SessionActions.setMe,
+      onSetError: SessionActions.setError,
       onLogout: SessionActions.logout
     });
     this.exportPublicMethods({
@@ -35,27 +33,19 @@ class SessionStore {
     return !!this.getAccessToken();
   }
 
-  onGetMeSuccess(me) {
-    cookie.remove('loginReferrer');
-    this.setState({me});
-  }
-
-  onGetError(error) {
-    this.setState(error);
-  }
-
-  onLoginSuccess(me) {
+  onSetMe(me) {
     cookie.save('accessToken', me.accessToken);
     this.setState({me});
   }
 
-  onLoginError(error) {
+  onSetError(error) {
+    cookie.remove('accessToken');
     this.setState({error});
   }
 
   onLogout() {
-    cookie.remove('accessToken');
     cookie.remove('loginReferrer');
+    cookie.remove('accessToken');
     this.setState(this.getDefaultState());
   }
 }

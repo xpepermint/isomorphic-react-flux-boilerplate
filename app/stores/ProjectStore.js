@@ -5,16 +5,16 @@ class ProjectStore {
   constructor() {
     this.state = {project: {}};
     this.bindListeners({
-      onGetProjectSuccess: ProjectActions.getProjectSuccess,
-      onGetProjectError: ProjectActions.getProjectError,
+      onSetProject: ProjectActions.setProject,
+      onSetError: ProjectActions.setError,
     });
   }
 
-  onGetProjectSuccess(project) {
+  onSetProject(project) {
     this.setState({project});
   }
 
-  onGetProjectError(error) {
+  onSetError(error) {
     this.setState({error});
   }
 }

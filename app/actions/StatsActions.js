@@ -4,14 +4,14 @@ import Api from '../lib/Api';
 class StatsActions {
   getStats() {
     this.dispatch();
-    Api.get(`/stats`).then(this.actions.getStatsSuccess).catch(this.actions.getStatsError);
+    Api.get(`/stats`).then(this.actions.setStats).catch(this.actions.setError);
   }
 
-  getStatsSuccess(res) {
+  setStats(res) {
     this.dispatch(res.data);
   }
 
-  getStatsError(res) {
+  setError(res) {
     this.dispatch(res.data.error);
   }
 }

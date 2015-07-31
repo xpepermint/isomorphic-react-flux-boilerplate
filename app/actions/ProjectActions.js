@@ -4,14 +4,14 @@ import Api from '../lib/Api';
 class ProjectActions {
   getProject(id) {
     this.dispatch();
-    Api.get(`/projects/${id}`, {accessToken: true}).then(this.actions.getProjectSuccess).catch(this.actions.getProjectError);
+    Api.get(`/projects/${id}`, {accessToken: true}).then(this.actions.setProject).catch(this.actions.setError);
   }
 
-  getProjectSuccess(res) {
+  setProject(res) {
     this.dispatch(res.data);
   }
 
-  getProjectError(res) {
+  setError(res) {
     this.dispatch(res.data.error);
   }
 }

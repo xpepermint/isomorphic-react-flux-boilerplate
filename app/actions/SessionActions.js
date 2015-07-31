@@ -4,32 +4,24 @@ import Api from '../lib/Api';
 class SessionActions {
   getMe() {
     this.dispatch();
-    Api.get(`/me`, {accessToken: true}).then(this.actions.getMeSuccess).catch(this.actions.getMeError);
+    Api.get(`/me`, {accessToken: true}).then(this.actions.setMe).catch(this.actions.setError);
   }
 
-  getMeSuccess(res) {
+  setMe(res) {
     this.dispatch(res.data);
-  }
-
-  getMeError(res) {
-    this.dispatch(res.data.error);
   }
 
   login(data) {
     this.dispatch();
-    Api.post(`/login`, data).then(this.actions.loginSuccess).catch(this.actions.loginError);
-  }
-
-  loginSuccess(res) {
-    this.dispatch(res.data);
-  }
-
-  loginError(res) {
-    this.dispatch(res.data.error);
+    Api.post(`/login`, data).then(this.actions.setMe).catch(this.actions.setError);
   }
 
   logout() {
     this.dispatch();
+  }
+
+  setError(res) {
+    this.dispatch(res.data.error);
   }
 }
 

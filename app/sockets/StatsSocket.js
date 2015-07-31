@@ -16,7 +16,7 @@ class StatsSocket {
   }
 
   onInitialize(stats) {
-    StatsActions.getStatsSuccess(stats);
+    StatsActions.setStats(stats);
   }
 }
 
