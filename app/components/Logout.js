@@ -1,5 +1,6 @@
 import React from 'react';
 import SessionActions from '../actions/SessionActions';
+import cookie from 'react-cookie';
 
 class Logout extends React.Component {
   static contextTypes = {
@@ -7,6 +8,7 @@ class Logout extends React.Component {
   };
 
   componentDidMount() {
+    cookie.remove('loginReferrer');
     SessionActions.logout();
     setImmediate(() => {this.context.router.transitionTo('/')});
   }

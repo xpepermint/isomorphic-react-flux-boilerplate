@@ -16,7 +16,11 @@ function render(req, res, next) {
   let location = new Location(req.path, req.query);
   Router.run(routes, location, (error, state, transition) => {
     if (error) return next(error);
-    if (transition.isCancelled) return res.redirect(transition.redirectInfo.pathname);
+
+    if (transition.isCancelled) {
+      if (transition.redirectInfo.pathname == '/login') res.cookie('loginReferrer ', location.pathname);
+      return res.redirect(transition.redirectInfo.pathname);
+    }
 
     bootstrap(state, req).then(snapshot => {
       Alt.bootstrap(snapshot);

@@ -1,4 +1,5 @@
 import React from 'react';
+import cookie from 'react-cookie';
 import serialize from 'form-serialize';
 import SessionActions from '../actions/SessionActions';
 import SessionStore from '../stores/SessionStore';
@@ -26,7 +27,10 @@ class Login extends React.Component {
     this.setState(SessionStore.getState());
 
     if (SessionStore.isAuthenticated()) {
-      setImmediate(() => {this.context.router.transitionTo('/projects')});
+      setImmediate(() => {
+        this.context.router.transitionTo(cookie.load('loginReferrer') || '/');
+        cookie.remove('loginReferrer');
+      });
     }
   }
 
