@@ -1,11 +1,10 @@
-import axios from 'axios';
-import alt from '../lib/Alt';
-import config from '../../config';
+import Alt from '../lib/Alt';
+import Api from '../lib/Api';
 
 class StatsActions {
   getStats() {
     this.dispatch();
-    axios.get(`${config.apiBaseUrl}/stats`).then(this.actions.getStatsSuccess).catch(this.actions.getStatsError);
+    Api.get(`/stats`).then(this.actions.getStatsSuccess).catch(this.actions.getStatsError);
   }
 
   getStatsSuccess(res) {
@@ -17,4 +16,4 @@ class StatsActions {
   }
 }
 
-export default alt.createActions(StatsActions);
+export default Alt.createActions(StatsActions);

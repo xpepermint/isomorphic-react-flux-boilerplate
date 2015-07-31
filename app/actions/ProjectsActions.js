@@ -1,12 +1,10 @@
-import axios from 'axios';
-import alt from '../lib/Alt';
-import config from '../../config';
-import SessionStore from '../stores/SessionStore';
+import Alt from '../lib/Alt';
+import Api from '../lib/Api';
 
 class ProjectsActions {
   getProjects() {
     this.dispatch();
-    axios.get(`${config.apiBaseUrl}/projects`, this.actions.getRequestOptions()).then(this.actions.getProjectsSuccess).catch(this.actions.getProjectsError);
+    Api.get(`/projects`, {accessToken: true}).then(this.actions.getProjectsSuccess).catch(this.actions.getProjectsError);
   }
 
   getProjectsSuccess(res) {
@@ -16,11 +14,6 @@ class ProjectsActions {
   getProjectsError(res) {
     this.dispatch(res.data.error);
   }
-
-  getRequestOptions() {
-    let accessToken = SessionStore.getAccessToken();
-    return {headers: {'Authorization': `Bearer ${accessToken}`}};
-  }
 }
 
-export default alt.createActions(ProjectsActions);
+export default Alt.createActions(ProjectsActions);

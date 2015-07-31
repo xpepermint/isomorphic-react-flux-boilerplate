@@ -1,12 +1,10 @@
-import axios from 'axios';
-import alt from '../lib/Alt';
-import config from '../../config';
-import SessionStore from '../stores/SessionStore';
+import Alt from '../lib/Alt';
+import Api from '../lib/Api';
 
 class SessionActions {
   getMe() {
     this.dispatch();
-    axios.get(`${config.apiBaseUrl}/me`, this.actions.getRequestOptions()).then(this.actions.getStatsSuccess).catch(this.actions.getStatsError);
+    Api.get(`/me`, {accessToken: true}).then(this.actions.getMeSuccess).catch(this.actions.getMeError);
   }
 
   getMeSuccess(res) {
@@ -19,7 +17,7 @@ class SessionActions {
 
   login(data) {
     this.dispatch();
-    axios.post(`${config.apiBaseUrl}/login`, data).then(this.actions.loginSuccess).catch(this.actions.loginError);
+    Api.get(`/login`, data).then(this.actions.loginSuccess).catch(this.actions.loginError);
   }
 
   loginSuccess(res) {
@@ -33,11 +31,6 @@ class SessionActions {
   logout() {
     this.dispatch();
   }
-
-  getRequestOptions() {
-    let accessToken = SessionStore.getAccessToken();
-    return {headers: {'Authorization': `Bearer ${accessToken}`}};
-  }
 }
 
-export default alt.createActions(SessionActions);
+export default Alt.createActions(SessionActions);
