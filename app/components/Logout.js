@@ -8,7 +8,6 @@ class Logout extends React.Component {
   };
 
   componentDidMount() {
-    cookie.remove('loginReferrer');
     SessionActions.logout();
     setImmediate(() => {this.context.router.transitionTo('/')});
   }

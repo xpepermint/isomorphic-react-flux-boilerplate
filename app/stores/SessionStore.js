@@ -1,40 +1,47 @@
 import cookie from 'react-cookie';
 import Alt from '../lib/Alt';
-import SessionSource from '../sources/SessionSource';
 import SessionActions from '../actions/SessionActions';
 
 class SessionStore {
   constructor() {
-    this.registerAsync(SessionSource);
-    this.bindActions(SessionActions);
-    this.exportPublicMethods({isAuthenticated: this.isAuthenticated, getAccessToken: this.getAccessToken});
-    this.state = {me: {}};
+    this.state = this.getDefaultState();
+    this.bindListeners({
+      onGetMeSuccess: SessionActions.getMeSuccess,
+      onGetError: SessionActions.getMeError,
+      onLoginSuccess: SessionActions.loginSuccess,
+      onLoginError: SessionActions.loginError,
+      onLogout: SessionActions.logout
+    });
+    this.exportPublicMethods({
+      isAuthenticated: this.isAuthenticated,
+      getAccessToken: this.getAccessToken,
+      getLoginReferrer: this.getLoginReferrer
+    });
+  }
+
+  getDefaultState() {
+    return {me: {}};
   }
 
   getAccessToken() {
     return cookie.load('accessToken');
   }
 
+  getLoginReferrer() {
+    return cookie.load('loginReferrer') || '/';
+  }
+
   isAuthenticated() {
     return !!this.getAccessToken();
   }
 
-  onGetMe() {
-    if (this.getInstance().isLoading()) return;
-    this.getInstance().getMe();
-  }
-
   onGetMeSuccess(me) {
+    cookie.remove('loginReferrer');
     this.setState({me});
   }
 
   onGetError(error) {
     this.setState(error);
-  }
-
-  onLogin(data) {
-    if (this.getInstance().isLoading()) return;
-    this.getInstance().login(data);
   }
 
   onLoginSuccess(me) {
@@ -48,6 +55,8 @@ class SessionStore {
 
   onLogout() {
     cookie.remove('accessToken');
+    cookie.remove('loginReferrer');
+    this.setState(this.getDefaultState());
   }
 }
 

@@ -30,7 +30,6 @@ class Projects extends React.Component {
           return (
             <li key={project.id}>
               <Link to={`/projects/${project.id}`}>{project.name}</Link>
-              <span>, {project.updatedAt}</span>
             </li>
           );
         })}

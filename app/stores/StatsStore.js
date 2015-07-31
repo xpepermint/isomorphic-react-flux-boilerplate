@@ -1,17 +1,13 @@
 import Alt from '../lib/Alt';
-import StatsSource from '../sources/StatsSource';
 import StatsActions from '../actions/StatsActions';
 
 class StatsStore {
   constructor() {
-    this.registerAsync(StatsSource);
-    this.bindActions(StatsActions);
     this.state = {stats: {}};
-  }
-
-  onGetStats(id) {
-    if (this.getInstance().isLoading()) return;
-    this.getInstance().getStats(id);
+    this.bindListeners({
+      onGetStatsSuccess: StatsActions.getStatsSuccess,
+      onGetStatsError: StatsActions.getStatsError,
+    });
   }
 
   onGetStatsSuccess(stats) {
@@ -19,7 +15,7 @@ class StatsStore {
   }
 
   onGetStatsError(error) {
-    this.setState(error);
+    this.setState({error});
   }
 }
 

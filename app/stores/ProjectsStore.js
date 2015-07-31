@@ -1,17 +1,13 @@
 import Alt from '../lib/Alt';
-import ProjectsSource from '../sources/ProjectsSource';
 import ProjectsActions from '../actions/ProjectsActions';
 
 class ProjectsStore {
   constructor() {
-    this.registerAsync(ProjectsSource);
-    this.bindActions(ProjectsActions);
     this.state = {projects: []};
-  }
-
-  onGetProjects() {
-    if (this.getInstance().isLoading()) return;
-    this.getInstance().getProjects();
+    this.bindListeners({
+      onGetProjectsSuccess: ProjectsActions.getProjectsSuccess,
+      onGetProjectsError: ProjectsActions.getProjectsError,
+    });
   }
 
   onGetProjectsSuccess(projects) {
@@ -19,7 +15,7 @@ class ProjectsStore {
   }
 
   onGetProjectsError(error) {
-    this.setState(error);
+    this.setState({error});
   }
 }
 
