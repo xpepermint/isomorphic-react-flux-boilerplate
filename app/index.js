@@ -1,4 +1,4 @@
-require('./styles/index.styl');
+import './styles/index.styl';
 
 import Iso from 'iso';
 import React from 'react';
