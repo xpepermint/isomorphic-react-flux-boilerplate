@@ -6,7 +6,7 @@ import Location from 'react-router/lib/Location';
 import cookie from 'react-cookie';
 import routes from '../../app/routes';
 import Alt from '../../app/lib/Alt';
-import bootstrap from '../../app/lib/bootstrap';
+import AltBootstrap from '../lib/AltBootstrap';
 
 export default {render};
 
@@ -22,7 +22,7 @@ function render(req, res, next) {
       return res.redirect(transition.redirectInfo.pathname);
     }
 
-    bootstrap(state, req).then(snapshot => {
+    AltBootstrap.run(state, req).then(snapshot => {
       Alt.bootstrap(snapshot);
 
       let markup = ReactDomServer.renderToString(<Router {...state}/>);
