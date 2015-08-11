@@ -28,9 +28,9 @@ class Stats extends React.Component {
   render() {
     return (
       <div>
-        <div>Environment: {this.state.stats.env}</div>
-        <div>Platform: {this.state.stats.platform}</div>
-        <div>Uptime: {this.state.stats.uptime}</div>
+        <div key='env'>Environment: {this.state.stats.env}</div>
+        <div key='plat'>Platform: {this.state.stats.platform}</div>
+        <div key='uptime'>Uptime: {this.state.stats.uptime}</div>
       </div>
     );
   }

@@ -8,8 +8,22 @@
     "webpack:server": "./node_modules/.bin/webpack-dev-server --inline --devtool eval --progress --colors --hot --port 4445 --host 127.0.0.1 --content-base public/assets/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xpepermint/isomorphic-react-flux-boilerplate.git"
+  },
+  "keywords": [
+    "react",
+    "express",
+    "template",
+    "boilerplate"
+  ],
+  "author": "Xpepermint",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xpepermint/isomorphic-react-flux-boilerplate/issues"
+  },
+  "homepage": "https://github.com/xpepermint/isomorphic-react-flux-boilerplate#readme",
   "dependencies": {
     "alt": "^0.17.1",
     "axios": "^0.5.4",
@@ -22,6 +36,7 @@
     "iso": "^4.1.0",
     "jade": "^1.11.0",
     "react": "^0.14.0-beta1",
+    "react-addons-css-transition-group": "^0.14.0-beta1",
     "react-cookie": "git+https://github.com/eXon/react-cookie.git",
     "react-dom": "^0.14.0-beta1",
     "react-router": "^1.0.0-beta3"
