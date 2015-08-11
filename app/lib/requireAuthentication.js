@@ -3,9 +3,7 @@ import cookie from 'react-cookie';
 
 export default function(nextState, transition) {
   if (!SessionStore.isAuthenticated()) {
-    if (typeof location != 'undefined') {
-      cookie.save('loginReferrer', location.pathname);
-    }
+    SessionStore.setLoginReferrer(nextState.location.pathname);
     transition.to('/login');
   }
 }

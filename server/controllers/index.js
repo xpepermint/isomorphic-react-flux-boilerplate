@@ -12,15 +12,12 @@ export default {render};
 
 function render(req, res, next) {
   cookie.setRawCookie(req.headers.cookie);
+  cookie.save = res.cookie;
 
   let location = new Location(req.path, req.query);
   Router.run(routes, location, (error, state, transition) => {
     if (error) return next(error);
-
-    if (transition.isCancelled) {
-      if (transition.redirectInfo.pathname == '/login') res.cookie('loginReferrer ', location.pathname);
-      return res.redirect(transition.redirectInfo.pathname);
-    }
+    if (transition.isCancelled) return res.redirect(transition.redirectInfo.pathname);
 
     AltBootstrap.run(state, req).then(snapshot => {
       Alt.bootstrap(snapshot);

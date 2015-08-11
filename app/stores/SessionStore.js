@@ -13,7 +13,8 @@ class SessionStore {
     this.exportPublicMethods({
       isAuthenticated: this.isAuthenticated,
       getAccessToken: this.getAccessToken,
-      getLoginReferrer: this.getLoginReferrer
+      getLoginReferrer: this.getLoginReferrer,
+      setLoginReferrer: this.setLoginReferrer
     });
   }
 
@@ -27,6 +28,10 @@ class SessionStore {
 
   getLoginReferrer() {
     return cookie.load('loginReferrer') || '/';
+  }
+
+  setLoginReferrer(path) {
+    cookie.save('loginReferrer', path);
   }
 
   isAuthenticated() {
