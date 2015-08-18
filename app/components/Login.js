@@ -39,7 +39,7 @@ class Login extends React.Component {
 
   render() {
     return (
-      <form ref='form' onSubmit={this.onSubmit}>
+      <form ref='form' onSubmit={this.onSubmit.bind(this)}>
         {this.state.error ? (<div>Invalid credentials!</div>) : null}
         <input name='username' type='text' placeholder='Username' />
         <input name='password' type='password' placeholder='Password' />

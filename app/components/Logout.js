@@ -9,7 +9,7 @@ class Logout extends React.Component {
 
   componentDidMount() {
     SessionActions.logout();
-    setImmediate(() => {this.context.router.transitionTo('/')});
+    setImmediate(() => {this.context.router.replaceWith('/')});
   }
 
   render() {
